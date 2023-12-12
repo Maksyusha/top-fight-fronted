@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ILoginRequest, ITokenResponse } from '../types/login';
 import { deleteCookie, setCookie } from '../../utils/cookie';
-import { act } from '@testing-library/react';
 import { AppThunk } from '../types';
 import { getLogoutRequestApi, getUserRequestApi, postLoginRequestApi } from '../api';
 import { IUserData } from '../types/user';
@@ -103,7 +102,7 @@ export const sendLogin =
       .then(tokens => {
         dispatch(postLoginSuccess(tokens));
       })
-      .catch(() => dispatch(postLoginFailed));
+      .catch(() => dispatch(postLoginFailed()));
   };
 
 export const getUser = (): AppThunk => dispatch => {

@@ -3,14 +3,17 @@ import { Typography, Box, List, ListItem, ListItemProps, Collapse, Button, Divid
 import { styled } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import { IScheduleCell, IScheduleItemData } from '../../services/types/schedule';
-import { ILocationData } from '../../services/types/location';
+import { IScheduleCell } from '../../services/types/schedule';
 import { ILocation } from '../../services/slices/locations-slice';
 
 const daysOfWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
 
 const StyledListItem = styled(ListItem)<ListItemProps>(() => ({
   padding: '4px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  gap: '4px',
   border: '1px solid #fff',
   borderBottom: 'none',
   '&:last-child': {
@@ -41,9 +44,8 @@ const Schedule: FC<ISchedule> = ({ scheduleData }) => {
             {column.map((cell, k) => {
               return (
                 <StyledListItem key={k + 1}>
-                  <Typography>{`${getStringTime(cell.startTime)} - ${getStringTime(cell.endTime)} ${
-                    cell.trainer.name
-                  }`}</Typography>
+                  <Typography>{cell.trainer.name}</Typography>
+                  <Typography>{`${getStringTime(cell.startTime)}-${getStringTime(cell.endTime)} - ${cell.description}`}</Typography>
                 </StyledListItem>
               );
             })}
@@ -56,11 +58,12 @@ const Schedule: FC<ISchedule> = ({ scheduleData }) => {
 
 interface ILocationItem {
   frameWidth: string;
+  frameHeight: string;
   locationData: ILocation;
   divider: boolean;
 }
 
-const LocationItem: FC<ILocationItem> = ({ frameWidth, locationData, divider }) => {
+const LocationItem: FC<ILocationItem> = ({ frameWidth, frameHeight, locationData, divider }) => {
   const { name, photo, address, map, schedule } = locationData;
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [isScheduleOpen, setIsScheduleOpen] = useState(false);
@@ -72,7 +75,7 @@ const LocationItem: FC<ILocationItem> = ({ frameWidth, locationData, divider }) 
 
   if (frame) {
     frame.width = frameWidth;
-    frame.height = '300px';
+    frame.height = frameHeight;
   }
 
   const newMapElement = `${mapElement.innerHTML}`;
@@ -83,7 +86,7 @@ const LocationItem: FC<ILocationItem> = ({ frameWidth, locationData, divider }) 
         <Typography variant="h5" sx={{ mb: 4, width: '100%', textAlign: 'left' }}>
           {name}
         </Typography>
-        <Box component="img" maxWidth="100%" mb={4} src={photo} alt={name}></Box>
+        <Box component="img" sx={{maxWidth: '800px', width: '100%'}} mb={4} src={photo} alt={name}></Box>
         <Typography sx={{ mb: 2, width: '100%', textAlign: 'left' }}>Адрес: {address}</Typography>
         <Button
           sx={{ padding: 0, mb: 2, width: '100%', display: 'flex', justifyContent: 'flex-start' }}

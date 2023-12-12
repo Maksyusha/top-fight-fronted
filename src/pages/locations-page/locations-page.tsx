@@ -2,26 +2,28 @@ import { FC, useState, useEffect } from 'react';
 import { useMediaQuery, Container, Typography, List } from '@mui/material';
 import { theme } from '../../components/theme/theme';
 import LocationItem from '../../components/location-item/location-item';
-import { locationsData } from '../../utils/data';
 import { useAppSelector } from '../../hooks/redux-hooks';
 
 const LocationsPage: FC = () => {
-  const isMatchDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmMatchDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMdMatchDown = useMediaQuery(theme.breakpoints.down('md'))
   const { locations } = useAppSelector(store => store.locations);
-  const [frameWidth, setFrameWidth] = useState(window.innerWidth - (isMatchDown ? 36 : 64) + 'px');
+  const [frameWidth, setFrameWidth] = useState(window.innerWidth >= 1200 ? 1200 - 68 + 'px' : window.innerWidth - (isSmMatchDown ? 36 : 64) + 'px');
+  const [frameHeight, setFrameHeight] = useState((isMdMatchDown ? 300 : 500) + 'px')
 
   const getFrameWidth = (innerWidth: number) => {
-    const padding = isMatchDown ? 36 : 64;
-    if (innerWidth < 800) return innerWidth - padding + 'px';
+    const padding = isSmMatchDown ? 36 : 68;
 
-    return 800 - padding + 'px';
+    if (innerWidth === 399) return innerWidth - 36 + 'px'
+    if (innerWidth === 400) return innerWidth - 68 + 'px'
+    if (innerWidth >= 1200) return 1200 - 68 + 'px'
+    return innerWidth - padding + 'px';
   };
 
   useEffect(() => {
     window.addEventListener('resize', () => {
-      const innerWidth = window.innerWidth;
-
-      setFrameWidth(getFrameWidth(innerWidth));
+      setFrameWidth(getFrameWidth(window.innerWidth));
+      setFrameHeight((isMdMatchDown ? 300 : 500) + 'px')
     });
   });
 
@@ -37,8 +39,9 @@ const LocationsPage: FC = () => {
               <LocationItem
                 key={index}
                 frameWidth={frameWidth}
+                frameHeight={frameHeight}
                 locationData={item}
-                divider={index !== locationsData.length - 1 ? true : false}
+                divider={index !== locations.length - 1 ? true : false}
               />
             );
           })}

@@ -80,7 +80,7 @@ const AddMemberForm: FC<ITeamForm> = ({ handleModalOpen }) => {
 
   const handleRegaliaInputKeyDown = (evt: KeyboardEvent<HTMLDivElement>) => {
     if (evt.key === 'Enter') {
-      if (regaliaInputRef && regaliaInputRef.current) {
+      if (regaliaInputRef.current) {
         const input = regaliaInputRef.current.querySelector('input');
 
         if (input) {
@@ -110,8 +110,16 @@ const AddMemberForm: FC<ITeamForm> = ({ handleModalOpen }) => {
 
       if (!form.checkValidity()) return form.reportValidity();
 
+      let newRegaliaValues = regaliaValues.slice()
+
+      if (regaliaInputRef.current) {
+        const input = regaliaInputRef.current.querySelector('input');
+
+        if (input && input.value !== '') newRegaliaValues.push(input.value)
+      }
+
       const formData = new FormData(form);
-      formData.set('regalia', JSON.stringify(regaliaValues));
+      formData.set('regalia', JSON.stringify(newRegaliaValues));
 
       postPersonRequestApi(formData).then(data => {
         getPersonRequestApi(data.id)
@@ -120,8 +128,8 @@ const AddMemberForm: FC<ITeamForm> = ({ handleModalOpen }) => {
           .then(() => setRegaliaValues([]))
           .then(() => setSelectValue(''))
           .then(() => handleModalOpen('Член команды добавлен'))
-          .catch(err => handleModalOpen(err));
-      });
+          .catch(err => handleModalOpen(`Произшла ошибка ${err}`));
+      }).catch(err => handleModalOpen(`Произшла ошибка ${err}`));
     }
   };
 
@@ -155,7 +163,7 @@ const AddMemberForm: FC<ITeamForm> = ({ handleModalOpen }) => {
           })}
         </List>
       ) : null}
-      <StyledTextarea name="about" placeholder="О себе" required />
+      <StyledTextarea name="about" placeholder="О себе" />
       <input ref={uploadInputRef} accept="image/jpg, image/jpeg" name="photo" type="file" hidden required />
       <Button
         sx={{ width: '100%' }}
@@ -211,7 +219,7 @@ const RedactTeamForm: FC<ITeamForm> = ({ handleModalOpen }) => {
 
   const handleRegaliaInputKeyDown = (evt: KeyboardEvent<HTMLDivElement>) => {
     if (evt.key === 'Enter') {
-      if (regaliaInputRef && regaliaInputRef.current) {
+      if (regaliaInputRef.current) {
         const input = regaliaInputRef.current.querySelector('input');
 
         if (input) {
@@ -237,10 +245,18 @@ const RedactTeamForm: FC<ITeamForm> = ({ handleModalOpen }) => {
     if (form) {
       if (!form.checkValidity()) return form.reportValidity();
 
+      let newRegaliaValues = regaliaValues.slice()
+
+      if (regaliaInputRef.current) {
+        const input = regaliaInputRef.current.querySelector('input');
+
+        if (input && input.value !== '') newRegaliaValues.push(input.value)
+      }
+
       const formData = new FormData();
       formData.set('name', values.name);
       formData.set('role', roleSelectValue);
-      formData.set('regalia', JSON.stringify(regaliaValues));
+      formData.set('regalia', JSON.stringify(newRegaliaValues));
       formData.set('about', values.about);
       if (uploadInputRef.current && uploadInputRef.current.files && uploadInputRef.current.files[0]) {
         formData.set('photo', uploadInputRef.current.files[0]);
@@ -250,8 +266,8 @@ const RedactTeamForm: FC<ITeamForm> = ({ handleModalOpen }) => {
         getPersonRequestApi(data.id)
           .then(person => dispatch(changePerson({ person })))
           .then(() => handleModalOpen('Данные члена команды изменены'))
-          .catch(err => handleModalOpen(err));
-      });
+          .catch(err => handleModalOpen(`Произшла ошибка ${err}`));
+      }).catch(err => handleModalOpen(`Произшла ошибка ${err}`))
     }
   };
 
@@ -268,7 +284,7 @@ const RedactTeamForm: FC<ITeamForm> = ({ handleModalOpen }) => {
         setIsModalOpen(false);
       })
       .then(() => handleModalOpen('Член команды удален'))
-      .catch(err => handleModalOpen(err));
+      .catch(err => handleModalOpen(`Произшла ошибка ${err}`));
   };
 
   useEffect(() => {
@@ -297,12 +313,12 @@ const RedactTeamForm: FC<ITeamForm> = ({ handleModalOpen }) => {
           >
             {team.length
               ? team.map((person, index) => {
-                  return (
-                    <MenuItem key={index} value={index}>
-                      {person.name}
-                    </MenuItem>
-                  );
-                })
+                return (
+                  <MenuItem key={index} value={index}>
+                    {person.name}
+                  </MenuItem>
+                );
+              })
               : null}
           </Select>
         </FormControl>
@@ -348,7 +364,7 @@ const RedactTeamForm: FC<ITeamForm> = ({ handleModalOpen }) => {
                 })}
               </List>
             ) : null}
-            <StyledTextarea name="about" placeholder="О себе" value={values.about} onChange={handleChange} required />
+            <StyledTextarea name="about" placeholder="О себе" value={values.about} onChange={handleChange} />
             <input ref={uploadInputRef} accept="image/jpg, image/jpeg" name="photo" type="file" hidden />
             <Button
               sx={{ width: '100%' }}
@@ -378,12 +394,12 @@ const RedactTeamForm: FC<ITeamForm> = ({ handleModalOpen }) => {
           >
             {team.length
               ? team.map((person, index) => {
-                  return (
-                    <MenuItem key={index} value={index}>
-                      {person.name}
-                    </MenuItem>
-                  );
-                })
+                return (
+                  <MenuItem key={index} value={index}>
+                    {person.name}
+                  </MenuItem>
+                );
+              })
               : null}
           </Select>
         </FormControl>

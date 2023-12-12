@@ -1,7 +1,7 @@
-import { createTheme } from '@mui/material';
-import { PaletteColorOptions } from '@mui/material';
+import { createTheme } from "@mui/material";
+import { PaletteColorOptions } from "@mui/material";
 
-declare module '@mui/material/styles' {
+declare module "@mui/material/styles" {
   interface Palette {
     tertiary: PaletteColorOptions;
   }
@@ -10,19 +10,50 @@ declare module '@mui/material/styles' {
   }
 }
 
-declare module '@mui/material/Button' {
+declare module "@mui/material/Button" {
   interface ButtonPropsColorOverrides {
     tertiary: true;
   }
 }
 
-declare module '@mui/material/InputBase' {
+declare module "@mui/material/InputBase" {
   interface InputBasePropsColorOverrides {
     tertiary: true;
   }
 }
 
-export const breakpointsTheme = createTheme({
+// export const breakpointsTheme = createTheme({
+//   breakpoints: {
+//     values: {
+//       xs: 0,
+//       sm: 400,
+//       md: 600,
+//       lg: 800,
+//       xl: 1280,
+//     },
+//   },
+// });
+
+const { palette } = createTheme();
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#111",
+      dark: "#000",
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: "#e31e25",
+      contrastText: "#fff",
+    },
+    tertiary: palette.augmentColor({
+      color: {
+        main: "#fff",
+        contrastText: "#000",
+      },
+    }),
+  },
   breakpoints: {
     values: {
       xs: 0,
@@ -32,79 +63,61 @@ export const breakpointsTheme = createTheme({
       xl: 1280,
     },
   },
-});
-
-const { palette } = createTheme();
-
-export const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#111',
-      dark: '#000',
-      contrastText: '#fff',
-    },
-    secondary: {
-      main: '#e31e25',
-      contrastText: '#fff',
-    },
-    tertiary: palette.augmentColor({
-      color: {
-        main: '#fff',
-        contrastText: '#000',
-      },
-    }),
-  },
   spacing: 4,
   typography: {
+    fontFamily: '"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontSize: 40,
       fontWeight: 600,
-      color: '#fff',
+      color: "#fff",
     },
     h2: {
       fontSize: 32,
-      fontWeight: 700,
-      color: '#fff',
+      fontWeight: 600,
+      color: "#fff",
     },
     h3: {
       fontSize: 28,
-      fontWeight: 700,
-      color: '#fff',
+      fontWeight: 600,
+      color: "#fff",
     },
     h4: {
       fontSize: 24,
-      fontWeight: 700,
-      color: '#fff',
+      fontWeight: 600,
+      color: "#fff",
     },
     h5: {
       fontSize: 20,
-      fontWeight: 700,
-      color: '#fff',
+      fontWeight: 600,
+      color: "#fff",
     },
     h6: {
       fontSize: 18,
-      fontWeight: 700,
-      color: '#fff',
+      fontWeight: 600,
+      color: "#fff",
     },
     body1: {
       fontSize: 16,
       fontWeight: 400,
-      color: '#fff',
+      color: "#fff",
     },
     body2: {
       fontSize: 14,
       fontWeight: 400,
-      color: '#fff',
+      color: "#fff",
     },
   },
   components: {
     MuiContainer: {
       styleOverrides: {
         root: {
-          backgroundColor: '#111',
-          padding: '32px 16px',
-          '@media(min-width: 400px)': {
-            padding: '32px',
+          backgroundColor: "#111",
+          padding: "32px 16px",
+          "@media(min-width: 400px)": {
+            padding: "32px",
+          },
+          "@media(min-width: 800px)": {
+            maxWidth: "1200px",
           },
         },
       },
@@ -112,14 +125,14 @@ export const theme = createTheme({
     MuiDivider: {
       styleOverrides: {
         root: {
-          borderColor: '#fff',
+          borderColor: "#fff",
         },
       },
     },
     MuiAccordion: {
       styleOverrides: {
         root: {
-          backgroundColor: '#111',
+          backgroundColor: "#111",
         },
       },
     },
@@ -134,15 +147,15 @@ export const theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          background: '#111',
+          background: "#111",
         },
       },
     },
     MuiTab: {
       styleOverrides: {
         root: {
-          alignItems: 'flex-start',
-          color: '#fff',
+          alignItems: "flex-start",
+          color: "#fff",
         },
       },
     },
@@ -156,35 +169,35 @@ export const theme = createTheme({
     // },
     MuiTextField: {
       defaultProps: {
-        color: 'primary',
+        color: "primary",
         inputProps: {
           style: {
-            color: '#fff',
+            color: "#fff",
           },
         },
       },
       styleOverrides: {
         root: {
-          '& .Mui-focused': {
-            color: '#fff',
+          "& .Mui-focused": {
+            color: "#fff",
           },
-          '& .MuiInputBase-input': {
-            color: '#fff',
+          "& .MuiInputBase-input": {
+            color: "#fff",
           },
-          '& .MuiInputLabel-root.Mui-focused': {
-            color: '#fff',
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: "#fff",
           },
-          '& .MuiOutlinedInput-root fieldset': {
-            borderColor: '#fff',
+          "& .MuiOutlinedInput-root fieldset": {
+            borderColor: "#fff",
           },
-          '& .MuiOutlinedInput-root:hover fieldset': {
-            borderColor: '#fff',
+          "& .MuiOutlinedInput-root:hover fieldset": {
+            borderColor: "#fff",
           },
-          '& .MuiOutlinedInput-root.Mui-focused fieldset': {
-            borderColor: '#fff',
+          "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+            borderColor: "#fff",
           },
-          '& .MuiOutlinedInput-root.Mui-hovered fieldset': {
-            borderColor: '#fff',
+          "& .MuiOutlinedInput-root.Mui-hovered fieldset": {
+            borderColor: "#fff",
           },
         },
       },
@@ -192,19 +205,19 @@ export const theme = createTheme({
     MuiSvgIcon: {
       styleOverrides: {
         root: {
-          color: '#fff',
+          color: "#fff",
         },
       },
     },
     MuiInputBase: {
       styleOverrides: {
         root: {
-          color: '#fff',
-          '& svg': {
-            color: '#fff',
+          color: "#fff",
+          "& svg": {
+            color: "#fff",
           },
-          '& fieldset': {
-            borderColor: '#fff !important',
+          "& fieldset": {
+            borderColor: "#fff !important",
           },
         },
       },
@@ -212,16 +225,16 @@ export const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          color: '#fff',
-          backgroundColor: '#111',
+          color: "#fff",
+          backgroundColor: "#111",
         },
       },
     },
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          '&:hover': {
-            backgroundColor: '#000',
+          "&:hover": {
+            backgroundColor: "#000",
           },
         },
       },
@@ -229,37 +242,37 @@ export const theme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: '#fff !important',
+          color: "#fff !important",
         },
       },
     },
     MuiDialog: {
       styleOverrides: {
         container: {
-          '& .MuiPaper-root': {
-            color: '#fff',
-            backgroundColor: '#111',
-            '& .MuiTypography-root': {
-              color: '#fff',
+          "& .MuiPaper-root": {
+            color: "#fff",
+            backgroundColor: "#111",
+            "& .MuiTypography-root": {
+              color: "#fff",
             },
-            '& .MuiClock-pin': {
-              backgroundColor: '#fff',
+            "& .MuiClock-pin": {
+              backgroundColor: "#fff",
             },
-            '& .MuiClockPointer-root': {
-              backgroundColor: '#fff',
+            "& .MuiClockPointer-root": {
+              backgroundColor: "#fff",
             },
-            '& .MuiClockPointer-thumb': {
-              backgroundColor: '#fff',
-              borderColor: '#fff',
+            "& .MuiClockPointer-thumb": {
+              backgroundColor: "#fff",
+              borderColor: "#fff",
             },
-            '& .MuiClockNumber-root': {
-              color: '#fff',
+            "& .MuiClockNumber-root": {
+              color: "#fff",
             },
-            '& .MuiClockNumber-root.Mui-selected': {
-              color: '#000',
+            "& .MuiClockNumber-root.Mui-selected": {
+              color: "#000",
             },
-            '& .MuiButtonBase-root': {
-              color: '#fff',
+            "& .MuiButtonBase-root": {
+              color: "#fff",
             },
           },
         },

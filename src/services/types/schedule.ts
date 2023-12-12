@@ -1,5 +1,3 @@
-import { IPersonData } from "./team";
-
 export interface IScheduleItemData {
   trainer: string;
   startTime: string;
@@ -15,6 +13,7 @@ export interface ITrainer {
 export interface IScheduleCell {
   id: number;
   trainer: ITrainer;
+  description: string;
   startTime: number;
   endTime: number;
   weekDay: number

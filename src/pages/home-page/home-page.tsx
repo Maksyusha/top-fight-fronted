@@ -4,12 +4,13 @@ import topFightSvg from '../../assets/home-page/top-fight.svg';
 import teamImage from '../../assets/home-page/team.jpg';
 import adultsImage from '../../assets/home-page/adults.jpg';
 import childrenImage from '../../assets/home-page/children.jpg';
-import campsImage from '../../assets/home-page/camps.jpg';
+import campsImage from '../../assets/home-page/camps.jpeg';
 import competitionsImage from '../../assets/home-page/competitions.jpg';
 import shopImage from '../../assets/home-page/shop.jpg';
-import { Box, Container, Typography, Divider, ImageList, ImageListItem, ImageListItemBar } from '@mui/material';
+import { Box, Container, Typography, Divider, ImageList, ImageListItem, ImageListItemBar, useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Routes } from '../../utils/constants';
+import { theme } from '../../components/theme/theme';
 
 const imageListData = [
   {
@@ -34,7 +35,7 @@ const imageListData = [
   },
   {
     to: Routes.Competitions,
-    title: 'Соревнования',
+    title: 'Турниры',
     src: competitionsImage,
   },
   {
@@ -44,13 +45,16 @@ const imageListData = [
   },
 ];
 
-const ImageListItemLink: FC<{ to: string; src: string; title: string; index: number }> = ({ to, src, title, index }) => {
+const ImageListItemLink: FC<{ to: string; src: string; title: string; isMatchedUp: boolean, index: number }> = ({ to, src, title, isMatchedUp, index }) => {
+  const cols = isMatchedUp ? 1 : index === 0 ? 2 : 1
+  const rows = isMatchedUp ? 1 : index === 0 ? 2 : 1
+
   return (
     <ImageListItem
       component={Link}
       to={to}
-      cols={index === 0 ? 2 : 1}
-      rows={index === 0 ? 2 : 1}
+      cols={cols}
+      rows={rows}
     >
       <img style={{ borderRadius: 4 }} src={src} alt={title} />
       <ImageListItemBar sx={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }} title={title} position="bottom" />
@@ -59,6 +63,8 @@ const ImageListItemLink: FC<{ to: string; src: string; title: string; index: num
 };
 
 const HomePage: FC = () => {
+  const isMatchedUp = useMediaQuery(theme.breakpoints.up('lg'))
+
   return (
     <section>
       <Box position="relative">
@@ -94,7 +100,7 @@ const HomePage: FC = () => {
         <Divider sx={{ mb: 8 }} />
         <ImageList sx={{ m: 0 }} variant="quilted" cols={2} gap={4}>
           {imageListData.map(({ to, src, title }, index) => (
-            <ImageListItemLink key={index} to={to} src={src} title={title} index={index} />
+            <ImageListItemLink key={index} to={to} src={src} title={title}  isMatchedUp={isMatchedUp} index={index} />
           ))}
         </ImageList>
       </Container>
