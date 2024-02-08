@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "./static/css/main.f432ef19.css",
-    "main.js": "./static/js/main.c2baaefe.js",
-    "static/js/787.74033d11.chunk.js": "./static/js/787.74033d11.chunk.js",
+    "main.js": "./static/js/main.5705a7dd.js",
+    "static/js/787.1851b1c3.chunk.js": "./static/js/787.1851b1c3.chunk.js",
     "static/media/competition-2.jpg": "./static/media/competition-2.97e973fe13e514f3a884.jpg",
     "static/media/team.jpg": "./static/media/team.2cb0f61ed6def7666b86.jpg",
     "static/media/children-1.jpg": "./static/media/children-1.dece3cd0390e3ef347e5.jpg",
@@ -11,15 +11,36 @@
     "static/media/children.jpg": "./static/media/children.670207438504a1d088d3.jpg",
     "static/media/competitions.jpg": "./static/media/competitions.ac9400b9304a1f37d28d.jpg",
     "static/media/1.jpeg": "./static/media/1.71caafb55b3f8f7e5270.jpeg",
+    "static/media/arms_red_1.jpg": "./static/media/arms_red_1.ec20fccd2277563c41f3.jpg",
+    "static/media/arms_blue_1.jpg": "./static/media/arms_blue_1.e8d92d8ef1a14c3dc7b3.jpg",
     "static/media/main.jpg": "./static/media/main.ac6d8b1490faa752b64a.jpg",
+    "static/media/arms_red_2.jpg": "./static/media/arms_red_2.95659608e1e05d9dadd0.jpg",
+    "static/media/arms_blue_2.jpg": "./static/media/arms_blue_2.c20ea8c7964f8a4bb1dd.jpg",
+    "static/media/legs_red_1.jpg": "./static/media/legs_red_1.ddf4e05078be6816e243.jpg",
+    "static/media/legs_blue_1.jpg": "./static/media/legs_blue_1.099c44b5642357fa7b81.jpg",
     "static/media/2.jpeg": "./static/media/2.8a02d3acc8918fe21afa.jpeg",
+    "static/media/helmet_red_2.jpg": "./static/media/helmet_red_2.44f63d59039d9ba223ae.jpg",
+    "static/media/helmet_red_3.jpg": "./static/media/helmet_red_3.c4ed675d3655d7027a01.jpg",
+    "static/media/helmet_red_1.jpg": "./static/media/helmet_red_1.45a6e7ddb75cb477402b.jpg",
     "static/media/camps.jpeg": "./static/media/camps.ed3604bfb75dd12b9f5a.jpeg",
     "static/media/camp-1.jpg": "./static/media/camp-1.ee21dee89bcfa5db6c0b.jpg",
     "static/media/shop.jpg": "./static/media/shop.26e3029f017bc8d555b4.jpg",
     "static/media/4.jpg": "./static/media/4.8534f37f9b935fb1b076.jpg",
+    "static/media/vest_blue_3.jpg": "./static/media/vest_blue_3.5fcc05e4d7bf93ebb190.jpg",
+    "static/media/vest_red_3.jpg": "./static/media/vest_red_3.c2a68d30f879d4b8a73a.jpg",
+    "static/media/vest_blue_1.jpg": "./static/media/vest_blue_1.ec13f119fb3849ab3cd9.jpg",
+    "static/media/vest_red_2.jpg": "./static/media/vest_red_2.f7562138a787bedf0f5a.jpg",
+    "static/media/vest_blue_2.jpg": "./static/media/vest_blue_2.b27128d8c9558d631219.jpg",
+    "static/media/vest_red_1.jpg": "./static/media/vest_red_1.e32122587cd1af840c06.jpg",
+    "static/media/legs_blue_2.jpg": "./static/media/legs_blue_2.476b34d1740407fd1909.jpg",
+    "static/media/legs_red_2.jpg": "./static/media/legs_red_2.ea3eaf648d7546e31775.jpg",
     "static/media/6.jpg": "./static/media/6.6d875a1dcd513e17589d.jpg",
+    "static/media/helmet_blue_3.jpg": "./static/media/helmet_blue_3.4f8f0d067885dfddb33c.jpg",
+    "static/media/helmet_blue_2.jpg": "./static/media/helmet_blue_2.099877b5bee09ee01c9c.jpg",
+    "static/media/helmet_blue_1.jpg": "./static/media/helmet_blue_1.12da99aa5206351e465b.jpg",
     "static/media/10.jpg": "./static/media/10.5fb1ce7ac7e82f760243.jpg",
     "static/media/8.jpg": "./static/media/8.093b64d18ee246a56fbe.jpg",
+    "static/media/sever.jpg": "./static/media/sever.0f06fc60099c7923652e.jpg",
     "static/media/rftbm-logo.png": "./static/media/rftbm-logo.5bde50d51864f71dd328.png",
     "static/media/challenge.png": "./static/media/challenge.7169bce9b556b49d3217.png",
     "static/media/5.jpg": "./static/media/5.6e97a27622a444797500.jpg",
@@ -45,11 +66,11 @@
     "index.html": "./index.html",
     "static/media/arrow.svg": "./static/media/arrow.e648430113c50449f7945857fee061ce.svg",
     "main.f432ef19.css.map": "./static/css/main.f432ef19.css.map",
-    "main.c2baaefe.js.map": "./static/js/main.c2baaefe.js.map",
-    "787.74033d11.chunk.js.map": "./static/js/787.74033d11.chunk.js.map"
+    "main.5705a7dd.js.map": "./static/js/main.5705a7dd.js.map",
+    "787.1851b1c3.chunk.js.map": "./static/js/787.1851b1c3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f432ef19.css",
-    "static/js/main.c2baaefe.js"
+    "static/js/main.5705a7dd.js"
   ]
 }
